@@ -1,11 +1,17 @@
 const path = require('path')
+const { merge } = require("webpack-merge");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
     mode:"development",
-    devtool:"source-map",
+    devtool:"eval-cheap-module-source-map",
     entry: path.join(__dirname, '../src/components/SelectInput/index.tsx'),
+    output: {
+        filename: "static/js/[name].js",
+        path: path.resolve(__dirname, '../dist'),
+        clean: true,
+        publicPath:'/'
+    },
     module: {
         rules:[
             {
@@ -24,12 +30,10 @@ module.exports = {
             }, {
                 test: /\.s[ac]ss$/i,
                 use: [
-                    MiniCssExtractPlugin.loader,
                     "style-loader",
                     "css-loader",
                     "sass-loader",
-                ],
-                exclude: /node-modules/
+                ]
             }
         ]
     },
@@ -41,15 +45,12 @@ module.exports = {
             template: path.resolve(__dirname, "../public/index.html"),
             filename: 'index.html',
             inject: true
-        }),
-        new MiniCssExtractPlugin({
-            filename: 'cssBundle.css'
         })
     ],
     devServer: {
         port: 3000,
         hot: true,
-        compress: true,
+        compress: false,
         historyApiFallback: true,
         static: {
             directory: path.join(__dirname, '../public'),
