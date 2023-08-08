@@ -21,7 +21,7 @@
 | btnValue | string | 查找 | 自定义button的value值 |
 |  dataList | array | - | 将请求得到的数据传入Selected |
 |  data | string | - | 具体数据对应的键传入option |
-| key | string or number | - | 给option的key属性赋值 |
+| setKey | string | - | 给每个option的key属性赋值 |
 | searchFunction(inputValue) | function | - | 当点击button后将执行的函数,参数为input的e.target.value |
 ## Example
 ```
@@ -56,7 +56,7 @@ return (
       palceholder = '请输入关键字'
       btnValue = '搜索'
       dataList = {dataDemo}
-      data = {data}
-      key = {id}
+      data = 'data'
+      setKey = 'id'
       searchFunction = {onClick}
     />
