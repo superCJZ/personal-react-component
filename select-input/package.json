@@ -1,8 +1,12 @@
 {
-  "name": "select-input",
+  "name": "@cjz/select-input",
+  "main": "dist/select-input.js",
+  "types": "dist/select-input.d.ts",
   "version": "1.0.0",
+  "license": "ISC",
   "private": true,
   "dependencies": {
+    "@popperjs/core": "^2.11.8",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -11,21 +15,21 @@
     "@types/react": "^18.2.18",
     "@types/react-dom": "^18.2.7",
     "bootstrap": "^5.3.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": ">=18.2.0",
+    "react-dom": ">=18.2.0",
     "react-pure-bootstrap": "^1.0.251",
     "react-scripts": "5.0.1",
-    "sass": "^1.64.2",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
-    "dev": "webpack-dev-server -c build/webpack.dev.js",
-    "prod": "webpack -c build/webpack.prod.js",
+    "dev": "webpack-dev-server -c config/webpack.dev.js",
+    "prod": "webpack -c config/webpack.prod.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "tsc-build":"tsc -p tsconfig.json"
   },
   "eslintConfig": {
     "extends": [
@@ -47,20 +51,31 @@
   },
   "devDependencies": {
     "@babel/core": "^7.22.9",
+    "@babel/preset-env": "^7.22.10",
     "@babel/preset-react": "^7.22.5",
     "@babel/preset-typescript": "^7.22.5",
+    "@types/bootstrap": "^5.2.6",
+    "autoprefixer": "^10.4.14",
     "babel-core": "^6.26.3",
     "babel-loader": "^9.1.3",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^6.8.1",
     "html-webpack-plugin": "^5.5.3",
+    "mini-css-extract-plugin": "^2.7.6",
+    "postcss-loader": "^7.3.3",
+    "sass": "^1.64.2",
     "sass-loader": "^13.3.2",
     "style-loader": "^3.3.3",
     "ts-loader": "^9.4.4",
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^4.15.1",
-    "webpack-merge": "^5.9.0"
+    "webpack-merge": "^5.9.0",
+    "webpack-node-externals": "^3.0.0"
+  },
+  "peerDependencies": {
+    "react": ">=18.2.0",
+    "react-dom": ">=18.2.0"
   }
 }

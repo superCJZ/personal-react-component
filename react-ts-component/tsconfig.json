@@ -1,0 +1,26 @@
+{
+  "include": [
+    "src/*",
+    "typings/index.d.ts"
+  ],
+  
+  "compilerOptions": {
+    "outDir": "dist",
+    "allowJs": true,
+    "emitDeclarationOnly": true,
+    "baseUrl": ".",
+    "rootDir": ".",
+    "target": "ES2019",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "strict": true,
+    "esModuleInterop": true,
+    "noImplicitOverride": true,
+    "noUnusedLocals": true,
+    "useUnknownInCatchVariables": false,
+    "declaration": true,
+    "declarationDir": "lib",
+    "jsx": "react"                              
+  },
+  "exclude": ["node-modules"]
+}

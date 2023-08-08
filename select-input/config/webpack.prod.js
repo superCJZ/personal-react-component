@@ -1,34 +1,21 @@
-const path = require('path')
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require('path');
+const { merge } = require('webpack-merge');
+const baseConfig = require('./webpack.base.js');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-module.exports = {
+const prodConfig = {
     mode:"production",
-    devtool:"source-map",
-    entry: path.join(__dirname, '../src/components/index'),
+    entry: path.join(__dirname, '../src/components/select-input.tsx'),
     output: {
-        filename: "[name].js",
-        path: path.resolve(__dirname, '../dist'),
+        filename: "select-input.js",
+        path: path.join(__dirname, '../dist/src'),
         library:'RPC',
         libraryTarget:"umd",
-        clean: true
+        libraryExport: 'default'
     },
     module: {
         rules:[
             {
-                test: /\.(ts|tsx)$/,
-                use: {
-                    loader: "babel-loader",
-                    options:{
-                        presets:[
-                            "@babel/preset-react",
-                            "@babel/preset-typescript",
-                        ]
-                    }
-                        
-                },
-                exclude: /node_modules/,
-            }, {
                 test: /\.s[ac]ss$/i,
                 use: [
                     MiniCssExtractPlugin.loader,
@@ -54,13 +41,24 @@ module.exports = {
         extensions: ['.ts','.tsx', '.js' ],
     },
     plugins:[
-        new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, "../public/index.html"),
-            filename: 'index.html',
-            inject: true
-        }),
         new MiniCssExtractPlugin({
-            filename: 'cssBundle.css'
+            filename: 'select-input.css'
         })
     ],
+    externals: { // 定义外部依赖，避免把react和react-dom打包进去
+        react: {
+            root: "React",
+            commonjs2: "react",
+            commonjs: "react",
+            amd: "react"
+        },
+        "react-dom": {
+            root: "ReactDOM",
+            commonjs2: "react-dom",
+            commonjs: "react-dom",
+            amd: "react-dom"
+        }
+    },
 }
+
+module.exports = merge(prodConfig, baseConfig);

@@ -1,0 +1,60 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+}
+.container .text {
+  display: flex;
+  align-items: center;
+}
+.container .text p:nth-child(2) {
+  color: #f00;
+}
+.container .normal {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+.container .normal p:nth-child(2) {
+  width: 100px;
+  height: 32px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  border: 1px solid #ccc;
+}
+.container .style1 {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+.container .style1 p:nth-child(2) {
+  width: 100px;
+  height: 32px;
+  border: 1px solid #ccc;
+}
+.container .style2 {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+.container .style2 p:nth-child(2) {
+  width: 70px;
+  height: 32px;
+  border: 1px solid #ccc;
+}
+.container .style3 {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+.container .style3 p:nth-child(2) {
+  width: 40px;
+  height: 32px;
+  border: 1px solid #ccc;
+}/*# sourceMappingURL=index.css.map */
