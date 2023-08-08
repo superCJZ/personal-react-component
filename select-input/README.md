@@ -1,46 +1,62 @@
-# Getting Started with Create React App
+# Select-Input
+该组件是基于bootstrap的封装组件，使用前请先安装bootstrap
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+```npm install bootstrap```
 
-## Available Scripts
+或在html文件中引入
 
-In the project directory, you can run:
+```<link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.3/css/bootstrap.css" rel="stylesheet">```
 
-### `npm start`
+详细可看https://getbootstrap.com/docs/5.3/getting-started/download/
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+引用组件
+```
+  import SelectInput from 'select-input/select-input
+  import 'select-input/select-input.css
+```
+## API
+|  Property      |  type   |  Default   |  Description   |
+| -----------    | ------- | ---------- | -------------- |
+|  placeholder   | string  | -          | 描述一些简短的提示|
+| btnValue | string | 查找 | 自定义button的value值 |
+|  dataList | array | - | 将请求得到的数据传入Selected |
+|  data | string | - | 具体数据对应的键传入option |
+| key | string or number | - | 给option的key属性赋值 |
+| searchFunction(inputValue) | function | - | 当点击button后将执行的函数,参数为input的e.target.value |
+## Example
+```
+import React from "react";
+import SelectInput from 'select-input/select-input
+import 'select-input/select-input.css
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+const Example = () => {
 
-### `npm test`
+  const dataDemo = [
+      {
+        id: 0,
+        data: 'option one'
+      },{
+        id: 1,
+        data: 'option two'
+      },{
+        id: 2,
+        data: 'option three'
+      },{
+        id: 3,
+        data: 'option four'
+      },
+  ]
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+  const onClick = (e) => {
+    console.log(e)
+  }
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+return (
+    <SelectInput
+      palceholder = '请输入关键字'
+      btnValue = '搜索'
+      dataList = {dataDemo}
+      data = {data}
+      key = {id}
+      searchFunction = {onClick}
+    />
